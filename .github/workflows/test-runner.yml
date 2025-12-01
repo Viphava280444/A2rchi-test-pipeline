@@ -1,0 +1,28 @@
+name: Test Self-Hosted Runner
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  
+
+jobs:
+  test:
+    runs-on: [submit76-runner]
+    
+    steps:
+      - name: Check runner info
+        run: |
+          echo "Hello from self-hosted runner!"
+          echo "Hostname: $(hostname)"
+          echo "User: $(whoami)"
+          echo "Working directory: $(pwd)"
+          echo "OS: $(uname -a)"
+          
+      - name: Check out code
+        uses: actions/checkout@v4
+        
+      - name: List files
+        run: ls -la
+        
+      - name: Run a simple test
+        run: echo "Runner is working correctly!"
