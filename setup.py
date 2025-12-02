@@ -4,7 +4,7 @@ import os
 
 def save_repo_path():
 
-    """Finds the repository path and writes it to a file in the package."""
+    """Finds the repository path and writes it to a file in the package.Test runner"""
 
     # Get the directory where this script is running (which should be the repo root directory)
     repo_root = Path(__file__).parent.resolve()
