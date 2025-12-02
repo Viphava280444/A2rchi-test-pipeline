@@ -3,7 +3,8 @@ name: PR Preview
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  workflow_dispatch:
+  issue_comment:
+    types: [created]
 
 concurrency:
   group: pr-preview-${{ github.event.pull_request.number }}
@@ -30,6 +31,7 @@ jobs:
   #       run: black --check .
 
   build-base-images:
+    if: github.event.issue.pull_request && (contains(github.event.comment.body, 'run pr-preview')
     runs-on: [submit76-runner]
     permissions:
       contents: read
@@ -100,6 +102,7 @@ jobs:
         run: scripts/dev/push_docker_images.sh "${{ steps.detect.outputs.tag }}"
 
   preview:
+    if: github.event.issue.pull_request && (contains(github.event.comment.body, 'run pr-preview')
     runs-on: [submit76-runner]
     needs: build-base-images
     permissions:
