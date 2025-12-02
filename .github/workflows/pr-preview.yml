@@ -144,8 +144,8 @@ jobs:
           env-file: .env
           services: chatbot
           hostmode: "true"
-          wait-url: http://localhost:7861/api/health
-          base-url: http://localhost:7861
+          wait-url: http://localhost:27861/api/health
+          base-url: http://localhost:27861
           extra-env: A2RCHI_COMPOSE_UP_FLAGS=--build --pull 
 
       - name: Delete PR preview Docker tags
