@@ -8,7 +8,7 @@ logger = get_logger(__name__)
 
 class A2rchi():
     """
-    Central class of the A2rchi framework.
+    Central class of the A2rchi framework.5555555
     Connects your database with the Pipeline, 
     creates and executes your Pipeline.
     """
