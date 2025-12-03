@@ -136,7 +136,7 @@ jobs:
         run: rm -rf site
 
       - name: Run smoke deployment
-        uses: ./.github/actions/run-smoke
+        uses: ./.github/actions/run-smoke-podman
         with:
           deployment-name: manual-${{ github.run_id }}
           config-path: tests/pr_preview_config/pr_preview_config.yaml
