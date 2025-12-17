@@ -18,8 +18,8 @@ BASE_IMAGE_MAP = {
 }
 
 SOURCE_PREFIXES = {
-    "localhost": "localhost/a2rchi/",
-    "dockerhub": "docker.io/a2rchi/",
+    "localhost": "localhost/ohmviphava/",
+    "dockerhub": "docker.io/ohmviphava/",
 }
 
 
