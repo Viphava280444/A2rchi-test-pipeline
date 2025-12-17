@@ -10,7 +10,7 @@ on:
       ref:
         description: Branch or commit to release
         required: false
-        default: master
+        default: main
       tag_name:
         description: Tag to create (e.g. v1.2.3)
         required: true
@@ -94,7 +94,7 @@ jobs:
         run: chmod +x scripts/dev/*.sh
 
       - name: Point Dockerfiles to versioned base images
-        run: python scripts/dev/update_service_base_images.py --tag "${{ needs.build-base-images.outputs.tag }}" --switch-source dockerhub
+        run: python scripts/dev/update_service_base_images.py --tag "${{ needs.build-images.outputs.tag }}" --switch-source dockerhub
 
       - name: Run smoke deployment
         uses: ./.github/actions/run-smoke
@@ -166,10 +166,8 @@ jobs:
             docker tag "docker.io/$image:$VERSION_TAG" "docker.io/$image:latest"
             docker push "docker.io/$image:latest"
           done
-      
       - name: Update version in project files
         run: python scripts/dev/update_version.py "${{ needs.build-images.outputs.clean }}"
-
       - name: Commit version bump
         env:
           VERSION_CLEAN: ${{ needs.build-images.outputs.clean }}
