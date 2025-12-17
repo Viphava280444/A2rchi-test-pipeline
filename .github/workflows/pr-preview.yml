@@ -132,7 +132,7 @@ jobs:
 
       - name: Prepare base image references
         if: needs.build-base-images.outputs.changed == 'true'
-        run: python scripts/dev/update_service_base_images.py --tag "${{ needs.build-base-images.outputs.tag }}" --switch-source local
+        run: python scripts/dev/update_service_base_images.py --tag "${{ needs.build-base-images.outputs.tag }}" --switch-source localhost
 
       - name: Verify MkDocs build
         run: mkdocs build --config-file docs/mkdocs.yml --strict
