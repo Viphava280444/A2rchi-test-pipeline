@@ -161,6 +161,6 @@ jobs:
           echo "Cleaning up local base images with tag: $TAG"
           docker rmi "localhost/ohmviphava/a2rchi-python-base:${TAG}" || true
           docker rmi "localhost/ohmviphava/a2rchi-pytorch-base:${TAG}" || true
-          docker rmi "localhost/ohmviphava/a2rchi-python-base:latest || true
-          docker rmi "localhost/ohmviphava/a2rchi-pytorch-base:latest || true
+          docker rmi "localhost/ohmviphava/a2rchi-python-base:latest" || true
+          docker rmi "localhost/ohmviphava/a2rchi-pytorch-base:latest" || true
           echo "Cleanup complete"
